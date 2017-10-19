@@ -8,7 +8,7 @@ var newSquares = [];
 
 var reset, pause, next;
 
-var pauseGame = false;
+var pauseGame = true;
 
 function setup(){
 	createCanvas(windowSize, windowSize);
@@ -22,14 +22,14 @@ function setup(){
 	button.position(8, windowSize+15);
 	button.mousePressed(reset);
 	reset = button;
-	button = createButton('Pause');
+	button = createButton('Play');
 	button.position(8, reset.y+25);
 	button.mousePressed(togglePause);
 	pause = button;
-	button = createButton('Next Iteration');
-	button.position(8, pause.y+25);
-	button.mousePressed(next);
-	next = button;
+	// button = createButton('Next Iteration');
+	// button.position(8, pause.y+25);
+	// button.mousePressed(next);
+	// next = button;
 }
 
 function draw(){
