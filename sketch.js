@@ -9,6 +9,9 @@ var newSquares = [];
 var reset, pause, next;
 
 var pauseGame = true;
+var colourInput, colourPicker;
+
+var rgbColour = 0
 
 function setup(){
 	createCanvas(windowSize, windowSize);
@@ -30,20 +33,44 @@ function setup(){
 	button.position(8, pause.y+25);
 	button.mousePressed(next);
 	next = button;
+
+	colourInput = createInput();
+  	colourInput.position(400, windowSize+15);
+  	colourInput.id("color");
+  	// colourInput.name("color");
+  	colourInput.value("#ffffff")
+
+	colourPicker = createDiv();
+	colourPicker.position(150, windowSize+15)
+	colourPicker.id("colorpicker");
 }
 
 function draw(){
 	background(255);
 	stroke(51);
+	var rgbColour = getColour();
 	if(pauseGame == false)calc();
 	for(var s = 0; s < squares.length; s++){
 		var cellBlock = squares[s];
 		if(cellBlock.x == 0 || cellBlock.x == rowNum-1 || cellBlock.y == 0 || cellBlock.y == rowNum-1){
 			cellBlock.val=0.2;
 		}
-		fill(cellBlock.val*255);
+		if(cellBlock.val != 0 && cellBlock.val != 0.2){fill(rgbColour.r, rgbColour.g, rgbColour.b);}else{fill(cellBlock.val*255);}
 		rect(cellBlock.x*scl, cellBlock.y*scl, scl, scl);
 	}
+}
+
+function getColour(){
+	return hexToRgb(document.getElementById("color").value);
+}
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
 }
 
 function calc(){
@@ -114,4 +141,8 @@ function togglePause(){
 
 function next(){
 	calc();
+}
+
+function changeColour(){
+
 }
