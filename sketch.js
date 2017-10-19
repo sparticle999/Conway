@@ -26,10 +26,10 @@ function setup(){
 	button.position(8, reset.y+25);
 	button.mousePressed(togglePause);
 	pause = button;
-	// button = createButton('Next Iteration');
-	// button.position(8, pause.y+25);
-	// button.mousePressed(next);
-	// next = button;
+	button = createButton('Next Iteration');
+	button.position(8, pause.y+25);
+	button.mousePressed(next);
+	next = button;
 }
 
 function draw(){
@@ -113,5 +113,5 @@ function togglePause(){
 }
 
 function next(){
-
+	calc();
 }
