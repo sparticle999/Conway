@@ -12,7 +12,7 @@ var x, xx, xxx;
 var pauseGame = true;
 var colourInput, colourPicker;
 
-var rgbColour = 0
+var rgbColour = {};
 
 function setup(){
 	createCanvas(windowSize, windowSize);
@@ -61,14 +61,14 @@ function setup(){
 function draw(){
 	background(255);
 	stroke(51);
-	var rgbColour = getColour();
+	rgbColour = getColour();
 	if(pauseGame == false)calc();
 	for(var s = 0; s < squares.length; s++){
 		var cellBlock = squares[s];
 		if(cellBlock.x == 0 || cellBlock.x == rowNum-1 || cellBlock.y == 0 || cellBlock.y == rowNum-1){
 			cellBlock.val=0.2;
 		}
-		if(cellBlock.val != 0 && cellBlock.val != 0.2){fill(rgbColour.r, rgbColour.g, rgbColour.b);}else{fill(cellBlock.val*255);}
+		if(cellBlock.val != 0 && cellBlock.val != 0.2 && rgbColour != null){fill(rgbColour.r, rgbColour.g, rgbColour.b);}else{fill(cellBlock.val*255);}
 		rect(cellBlock.x*scl, cellBlock.y*scl, scl, scl);
 	}
 }
