@@ -7,6 +7,7 @@ var squares = [];
 var newSquares = [];
 
 var reset, pause, next;
+var x, xx, xxx;
 
 var pauseGame = true;
 var colourInput, colourPicker;
@@ -33,6 +34,18 @@ function setup(){
 	button.position(8, pause.y+25);
 	button.mousePressed(next);
 	next = button;
+
+	x = createButton('>');
+	x.position(8, next.y+25);
+	x.mousePressed(speed1);
+
+	xx = createButton('>>');
+	xx.position(31, next.y+25);
+	xx.mousePressed(speed2);
+
+	xxx = createButton('>>>');
+	xxx.position(61, next.y+25);
+	xxx.mousePressed(speed3);
 
 	colourInput = createInput();
   	colourInput.position(400, windowSize+15);
@@ -143,6 +156,14 @@ function next(){
 	calc();
 }
 
-function changeColour(){
+function speed1(){
+	frameRate(5);
+}
 
+function speed2(){
+	frameRate(10);
+}
+
+function speed3(){
+	frameRate(20);
 }
